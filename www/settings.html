@@ -1,9 +1,158 @@
 <ons-page id="settings">
+    <script>
+        function setDifficulty(difficulty)
+        {
+            var settings = loadSettings();
+            var set = [10, 10, 20];
+            switch(difficulty)
+            {
+                case 0: set = [8,8,8]; break;
+                default:
+                case 1: set = [10,10,20]; break;
+                case 2: set = [15,15,50]; break;
+                case 3: set = [10,10,50]; break;
+            }
+
+            document.getElementById('in:width').value = set[0];
+            document.getElementById('in:height').value = set[1];
+            document.getElementById('in:numMines').value = set[2];
+
+            settings.difficulty = difficulty;
+            settings.width = set[0];
+            settings.height = set[1];
+            settings.numMines = set[2];
+
+            updateMax();
+            storeSettings(settings);
+        }    
+    </script>
+
     <ons-toolbar>
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">
             Settings
         </div>
     </ons-toolbar>
-    Settings!
+    <ons-list>
+        <ons-list-header>Difficulty</ons-list-header>
+        <ons-list-item tappable>
+            <label class="left">
+                <ons-radio name="difficulty" input-id="diff:easy" onclick="setDifficulty(0)"></ons-radio>
+            </label>
+            <label for="diff:easy" class="center">
+                I just want to impress my mom
+            </label>
+        </ons-list-item>
+        <ons-list-item tappable>
+            <label class="left">
+                <ons-radio name="difficulty" input-id="diff:normal" onclick="setDifficulty(1)" ></ons-radio>
+            </label>
+            <label for="diff:normal" class="center">
+                Give me a challenge
+            </label>
+        </ons-list-item>
+        <ons-list-item tappable>
+            <label class="left">
+                <ons-radio name="difficulty" input-id="diff:hard" onclick="setDifficulty(2)"></ons-radio>
+            </label>
+            <label for="diff:hard" class="center">
+                Hurt me plenty
+            </label>
+        </ons-list-item>
+        <ons-list-item tappable>
+            <label class="left">
+                <ons-radio name="difficulty" input-id="diff:hardest" onclick="setDifficulty(3)"></ons-radio>
+            </label>
+            <label for="diff:hardest" class="center">
+                Ultra-Violence
+            </label>
+        </ons-list-item>
+    
+        <ons-list-item>
+            <div class="center">
+                <span class="list-item__title">Allow guessing anywhere</span>
+                <span class="list-item__subtitle">By default, you are only allowed to guess on the boundary of revealed tiles.</span>
+            </div>
+            <div class="right">
+                <ons-switch id="sw:allowOutside"></ons-switch>
+            </div>
+        </ons-list-item>
+
+        <ons-list-item>
+            <div class="center">
+                <span class="list-item__title">Safe Mode</span>
+                <span class="list-item__subtitle">Double-click to reveal.</span>
+            </div>
+            <div class="right">
+                <ons-switch id="sw:safemode"></ons-switch>
+            </div>
+        </ons-list-item>
+
+        <ons-list-item expandable>
+            Expert Settings
+            <div class="expandable-content">
+                <ons-list-item>
+                    <div class="center">Width</div>
+                    <div class="right">
+                        <ons-input type="number" placeholder="10" min="1" max="30" id="in:width"></ons-input>
+                    </div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="center">Height</div>
+                    <div class="right">
+                        <ons-input type="number" placeholder="10" min="1" max="30" id="in:height"></ons-input>
+                    </div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="center">Mines</div>
+                    <div class="right">
+                        <ons-input type="number" placeholder="20" min="1" max="899" id="in:numMines"></ons-input>
+                    </div>
+                </ons-list-item>
+                <ons-list-item>
+                    <div class="center">
+                        Debug Mode
+                    </div>
+                    <div class="right">
+                        <ons-switch id="sw:debug"></ons-switch>
+                    </div>
+                </ons-list-item>
+            </div>
+        </ons-list-item>
+    </ons-list>
+
+    <script>
+
+
+        ons.getScriptPage().onInit = function() {
+            // Set up page's content or anything else
+            // this.querySelector('ons-toolbar .center').innerHTML = 'Title';
+            var settings = loadSettings();
+
+            this.onShow = function() { 
+                settings = loadSettings();
+                
+                var diffName;
+                switch(settings.difficulty)
+                {
+                    case 0: diffName = 'diff:easy'; break;
+                    default:
+                    case 1: diffName = 'diff:normal'; break;
+                    case 2: diffName = 'diff:hard'; break;
+                    case 3: diffName = 'diff:hardest'; break;
+                }
+                but = document.getElementById(diffName);
+                document.getElementById(diffName).checked = true;
+            };
+
+            this.onHide = function() {
+                storeSettings(settings);
+
+                document.querySelector('input[name="difficulty"]:checked').id;
+
+                
+            };
+            // this.onDestroy = function() { ... };
+        };
+    </script>
 </ons-page>

@@ -6,7 +6,7 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" />
         <!-- Good default declaration:
         * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
         * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -19,6 +19,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" href="OnsenUI-dist-2.10.10/css/onsenui.css">
         <link rel="stylesheet" href="OnsenUI-dist-2.10.10/css/onsen-css-components.min.css">
+        <!-- <link rel="stylesheet" href="OnsenUI-dist-2.10.10/css/dark-onsen-css-components.min.css"> -->
 
         <title>Minefair Game</title>
     </head>
@@ -33,6 +34,7 @@
                 document.querySelector('#menu').close();
                 document.querySelector('#navigator').bringPageTop(page, { animation: 'fade' });
             };
+
         </script>
         <ons-splitter>
             <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
@@ -55,5 +57,10 @@
             
         <script type="text/javascript" src="cordova.js"></script>
         <script src="OnsenUI-dist-2.10.10/js/onsenui.min.js"></script>
+        <script src="kaboom/lib/minisat.js"></script>
+        <script src="kaboom/lib/long-press-event.min.js"></script>
+        <script src="kaboom/sat.js"></script>
+        <script src="kaboom/index.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

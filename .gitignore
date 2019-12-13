@@ -1,0 +1,9 @@
+platforms
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+node_modules
+typings
+.vscode

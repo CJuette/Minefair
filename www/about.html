@@ -3,6 +3,27 @@
         <div class="left"><ons-back-button>Back</ons-back-button></div>
         <div class="center">About</div>
     </ons-toolbar>
-
-    This is the about page.
+    <ons-card>
+        <div class="title">Minefair</div>
+        <div class="content">
+            <p>Minefair, a.k.a. Kaboom is a <b>cruel, but fair</b> Minesweeper game:</p>
+            <ul style="padding-left: 20px;">
+                <li>The mines are not placed at the beginning, but determined as you play. There is no hidden state.</li>
+                <li>If you try to guess, the game will always choose the worst scenario.</li>
+                <li>
+                    Except when you are <b>forced</b> to guess (there are no safe cells anywhere). Then, guessing is completely safe.
+                    <ul><li>You are still expected to select one of the <b>adjacent</b> cells.
+                        Select "Allow guessing anywhere" if you want to be able to play elsewhere on the board.
+                    </ul>
+                </li>
+            </ul>
+            <p>Have fun!</p>
+        </div>
+    </ons-card>
+    <ons-card>
+        <div class="content">
+            <p>Kaboom originally developed by Paweł Marczewski (<a href="#" onclick="window.open('http://pwmarcz.pl','_system'); return false;">pwmarcz.pl</a>)</p>
+            <p>App-Adaptation by Christian Jütte</p>
+        </div>
+    </ons-card>
 </ons-page>

@@ -1,0 +1,3 @@
+[submodule "www/kaboom"]
+	path = www/kaboom
+	url = https://github.com/pwmarcz/kaboom.git

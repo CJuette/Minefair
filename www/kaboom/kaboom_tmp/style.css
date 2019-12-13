@@ -1,29 +1,20 @@
-div#playingfield {
-    margin: 2%;
-    margin-bottom: 5%;
-}
-
 .board {
     font-size: 0px;
     white-space: nowrap;
-    display: grid;
-    gap: 1vw;
-    /* background: #000000; */
 }
 
 .cell {
     font-size: 18px;
     display: inline-block;
     text-align: center;
-    width: 100%;
-    padding-bottom: 100%;
-    /* border: 1px solid #999; */
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
     user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
 
     position: relative;
-    border-radius: 3px;
 }
 
 .cell.known {
@@ -44,10 +35,10 @@ div#playingfield {
 
 .cell.unknown {
     background: #e0e0e0;
-    /* border-top-color: #fff;
+    border-top-color: #fff;
     border-left-color: #fff;
     border-right-color: #999;
-    border-bottom-color: #999; */
+    border-bottom-color: #999;
 }
 
 .cell.hint::before {
@@ -81,7 +72,7 @@ div#playingfield {
     line-height: 28px;
 
     /* Force load SVG */
-    background: url(../kaboom/sprites.svg) -1px -31px;
+    background: url(sprites.svg) -1px -31px;
 }
 .cell.label-1::after { content: "1"; }
 .cell.label-2::after { content: "2"; }
@@ -93,17 +84,17 @@ div#playingfield {
 .cell.label-8::after { content: "8"; }
 
 .cell.bomb-win::after {
-    background: url(../kaboom/sprites.svg) -61px -1px;
+    background: url(sprites.svg) -61px -1px;
 }
 
 .cell.flag::after {
     content: "";
-    background: url(../kaboom/sprites.svg) -31px -1px;
+    background: url(sprites.svg) -31px -1px;
 }
 
 .cell.bomb::after {
     content: "";
-    background: url(../kaboom/sprites.svg) -1px -1px;
+    background: url(sprites.svg) -1px -1px;
 }
 
 .cell.clickable {
@@ -126,12 +117,4 @@ h2 {
     opacity: 0;
     transition-property: opacity;
     transition-duration: 1s;
-}
-
-div#state {
-    font-size: 35px;
-    font-weight: bold;
-    color: rgba(0,0,0,0.5);
-    text-align: right;
-    margin: 0 2%;
 }
